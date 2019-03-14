@@ -11,7 +11,10 @@ namespace SistemaDeControleDeCusto.Base
     public class SistemaContext : DbContext
     {
         public SistemaContext() : base("SistemaContext") { }
+
         public DbSet<Departamento> Departamentos { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Movimentacao> Movimentacoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

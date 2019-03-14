@@ -12,5 +12,7 @@ namespace SistemaDeControleDeCusto.Models
         [Required]
         [MaxLength(100)]
         public string Nome { get; set; }
+
+        public virtual ICollection<Funcionario> Funcionarios { get; set; }
     }
 }
