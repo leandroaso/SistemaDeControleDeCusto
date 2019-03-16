@@ -5,5 +5,5 @@
 - Entity Framework 6
 - Bootstrap
 - LocalBD
-#Instalação
+# Instalação
 - Não é necessário rodar as migrations pois o repositório já está com um banco local, que está localizado na pasta "App_Data"
