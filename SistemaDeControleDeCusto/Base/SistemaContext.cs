@@ -10,7 +10,7 @@ namespace SistemaDeControleDeCusto.Base
 {
     public class SistemaContext : DbContext
     {
-        public SistemaContext() : base("SistemaContext") { }
+        public SistemaContext() : base("SistemaContext2") { }
 
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }

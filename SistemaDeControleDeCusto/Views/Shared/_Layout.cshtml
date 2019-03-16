@@ -7,6 +7,18 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    
+    <style>
+        .sub-titulo {
+            background-color: #444;
+            color: #fff;
+            padding: 15px 15px 15px 30px;
+            font-size: 1.8em;
+        }
+        body {
+            background-color: #DCDCDC;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,15 +29,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Movimentacao", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Departamentos", "Index", "Departamento")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Funcionarios", "Index", "Funcionario")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Movimentações", "Index", "Movimentacao")
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-
+    <div class="row sub-titulo" style="background-color: #444">
+        <span class="">@ViewBag.Title</span>
+    </div>
     <div class="container body-content">
         @RenderBody()
     </div>

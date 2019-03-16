@@ -1,11 +1,38 @@
-﻿
+﻿@using SistemaDeControleDeCusto.Models
+@model  SistemaDeControleDeCusto.ViewModel.DepartamentoViewModel
+
 @{
     ViewBag.Title = "Departamento";
 }
+<div style="padding-top: 10px" class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading text-right">
+            <span type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalDepartamento">Novo</span>
+        </div>
+        <div style="padding-top: 0;" class="panel-body text-center">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td class="text-center col-sm-2"><strong>ID</strong></td>
+                            <td class="text-center col-sm-10"><strong>Nome</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var departamento in Model.Departamentos)
+                        {
+                            <tr>
+                                <td class="text-center">@departamento.ID</td>
+                                <td class="text-center">@departamento.Nome</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Departanto</h2>
-
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalDepartamento">Novo</button>
 @{
-    Html.RenderPartial("_ModalDepartamento");
+    @Html.Partial("_ModalDepartamento", new Departamento())
 }

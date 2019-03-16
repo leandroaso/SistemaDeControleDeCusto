@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using SistemaDeControleDeCusto.Models;
 
 namespace SistemaDeControleDeCusto.Base
 {
     public class DepartamentoRepository : Repository<Departamento>
     {
-        public void Save(Departamento departamento)
+        public IList<Departamento> Listar()
         {
-            Context.Departamentos.Add(departamento);
+            return Context.Departamentos.ToArray();
         }
     }
 }

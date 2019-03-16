@@ -29,10 +29,10 @@ namespace SistemaDeControleDeCusto.Base
             return Context.Set<T>().Find(id);
         }
 
-        //public void Save(T entity)
-        //{
-        //    Context.Set<T>().Add(entity);
-        //}
+        public void Save(T entity)
+        {
+            Context.Set<T>().Add(entity);
+        }
 
         public void Update(T entity)
         {

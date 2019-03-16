@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaDeControleDeCusto.Models
 {
@@ -14,7 +12,29 @@ namespace SistemaDeControleDeCusto.Models
         [MaxLength(200)]
         public string Nome { get; set; }
 
-        [Required]
+        public int[] DepartamentosID { get; set; }
         public ICollection<Departamento> Departamentos { get; set; }
+
+        [NotMapped]
+        public string DepartamentosFormatados
+        {
+            get
+            {
+                var departamentos = string.Empty;
+                if (Departamentos == null)
+                    return string.Empty;
+
+                foreach (var departamento in Departamentos)
+                {
+                    departamentos += $" {departamento.Nome},";
+                }
+
+                if (string.IsNullOrWhiteSpace(departamentos))
+                    return string.Empty;
+
+                departamentos = departamentos.Substring(0, departamentos.Length - 1);
+                return departamentos; 
+            }
+        }
     }
 }

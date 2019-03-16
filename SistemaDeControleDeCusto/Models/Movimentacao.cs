@@ -17,6 +17,8 @@ namespace SistemaDeControleDeCusto.Models
         [MaxLength(500)]
         public string Descricao { get; set; }
 
-        public virtual Funcionario  Funcionario{ get; set; }
+        public decimal Valor { get; set; }
+
+        public Funcionario Funcionario { get; set; }
     }
 }
