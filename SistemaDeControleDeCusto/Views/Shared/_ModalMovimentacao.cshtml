@@ -1,0 +1,33 @@
+﻿@model SistemaDeControleDeCusto.Models.Movimentacao
+
+<div class="modal fade" id="modalMovimentacao" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @using (Html.BeginForm("Novo", "Movimentacao", FormMethod.Post))
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cadastro de Movimentação</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Funcionario)
+                        @Html.DropDownListFor(m => m.FuncionarioID, new SelectList(ViewBag.Funcionarios, "ID", "Nome"), new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        @Html.TextAreaFor(b => b.Descricao, new { @class = "form-control", @maxlength = "500", @required = "required" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Valor)
+                        @Html.TextBoxFor(b => b.Valor, new { @class = "form-control", type = "number", @required = "required", step = "0.01" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

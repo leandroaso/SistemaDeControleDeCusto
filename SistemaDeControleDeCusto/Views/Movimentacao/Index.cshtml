@@ -1,0 +1,60 @@
+﻿@using SistemaDeControleDeCusto.Models
+@model  SistemaDeControleDeCusto.ViewModel.MovimentacaoViewModel
+
+@{
+    ViewBag.Title = "Movimentações";
+    var funcionarios = (IList<Funcionario>)ViewBag.Funcionarios;
+}
+
+<div style="padding-top: 10px" class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading text-right">
+            @using (Html.BeginForm("index", "Movimentacao", FormMethod.Get, new {@class= "form-inline" }))
+            {
+                <div class="form-group">
+                    <select name="f" class="form-control">
+                        <option value="">Todos</option>
+                        @foreach (var fun in funcionarios)
+                        {
+                            <option value="@fun.ID">@fun.Nome</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="d" class="form-control" placeholder="Descrição"/>
+                </div>
+                <button type="submit" class="btn btn-success btn-sm">Buscar</button>
+                <span type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalMovimentacao">Novo</span>
+            }
+        </div>
+        <div style="padding-top: 0;" class="panel-body text-center">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td class="text-center col-sm-2"><strong>ID</strong></td>
+                            <td class="text-center col-sm-4"><strong>Descrição</strong></td>
+                            <td class="text-center col-sm-3"><strong>Funcionario</strong></td>
+                            <td class="text-center col-sm-3"><strong>Valor</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var funcionario in Model.Movimentacoes)
+                        {
+                            <tr>
+                                <td class="text-center">@funcionario.ID</td>
+                                <td class="text-center">@funcionario.Descricao</td>
+                                <td class="text-center">@funcionario.Funcionario.Nome</td>
+                                <td class="text-center">R$ @funcionario.Valor</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    @Html.Partial("_ModalMovimentacao", new Movimentacao())
+}
